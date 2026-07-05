@@ -39,7 +39,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             className="mt-4 inline-block"
           >
-            <Cover containerClassName="px-8 py-3 rounded-2xl">Solutions.</Cover>
+            <Cover containerClassName="px-8 py-3 rounded-2xl" className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none">Solutions.</Cover>
           </motion.div>
         </div>
 
