@@ -67,10 +67,7 @@ export function Team() {
         
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-400 font-semibold uppercase tracking-widest backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-            Organizing Committee
-          </div>
+          {/* Removed pill element as requested */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white mt-4">
             Meet the Team.
           </h2>

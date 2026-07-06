@@ -120,9 +120,7 @@ export function Schedule() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 bg-neutral-50 text-xs text-neutral-600 font-bold uppercase tracking-wider">
-            Timeline Schedule
-          </div>
+          {/* Removed pill element as requested */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-neutral-950">
             Event Roadmap.
           </h2>

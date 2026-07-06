@@ -1,34 +1,46 @@
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 interface PrizeCard {
+  rank: number;
   place: string;
   amount: string;
   label: string;
+  icon: string;
   accentColor: string;
   accentBorder: string;
+  glow: string;
 }
 
 const PRIZES: PrizeCard[] = [
   {
-    place: "2nd",
-    amount: "₹2,000",
-    label: "Runner Up",
-    accentColor: "from-slate-400 to-slate-600",
-    accentBorder: "border-slate-200 hover:border-slate-300"
-  },
-  {
+    rank: 1,
     place: "1st",
     amount: "₹3,000",
     label: "Grand Champions",
-    accentColor: "from-amber-400 to-yellow-600",
-    accentBorder: "border-amber-200 hover:border-amber-300"
+    icon: "🥇",
+    accentColor: "from-amber-400 to-yellow-500",
+    accentBorder: "border-amber-200 hover:border-amber-300",
+    glow: "shadow-amber-100/60"
   },
   {
+    rank: 2,
+    place: "2nd",
+    amount: "₹2,000",
+    label: "Runner Up",
+    icon: "🥈",
+    accentColor: "from-slate-400 to-slate-500",
+    accentBorder: "border-slate-200 hover:border-slate-300",
+    glow: "shadow-slate-100/40"
+  },
+  {
+    rank: 3,
     place: "3rd",
     amount: "₹1,000",
     label: "Second Runner Up",
-    accentColor: "from-amber-600 to-orange-700",
-    accentBorder: "border-orange-200 hover:border-orange-300"
+    icon: "🥉",
+    accentColor: "from-amber-600 to-orange-600",
+    accentBorder: "border-orange-200 hover:border-orange-300",
+    glow: "shadow-orange-100/40"
   }
 ];
 
@@ -42,9 +54,7 @@ export function Prizes() {
 
         {/* Header */}
         <div className="text-center mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 bg-neutral-50 text-xs text-neutral-600 font-bold uppercase tracking-wider">
-            Rewards & Recognition
-          </div>
+          {/* Removed pill element as requested */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-neutral-950">
             Prize Pool
           </h2>
@@ -53,21 +63,24 @@ export function Prizes() {
           </p>
         </div>
 
-        {/* 3D Prize Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-center justify-center">
+        {/* 3D Prize Cards Grid — ordered 1st, 2nd, 3rd */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch justify-center">
           {PRIZES.map((prize) => (
             <CardContainer
               key={prize.place}
-              containerClassName="py-8 lg:py-12"
+              containerClassName="py-8"
               className="w-full"
             >
               <CardBody
-                className={`relative w-full h-auto rounded-3xl p-10 bg-neutral-50/60 border ${prize.accentBorder} transition-all duration-300 group flex flex-col items-center text-center ${
-                  prize.place === "1st" ? "lg:scale-105 lg:-translate-y-2 shadow-lg shadow-amber-100/40" : ""
-                }`}
+                className={`relative w-full h-[280px] rounded-3xl p-10 bg-neutral-50/60 border ${prize.accentBorder} shadow-lg ${prize.glow} transition-all duration-300 group flex flex-col items-center justify-center text-center`}
               >
+                {/* Medal Icon */}
+                <CardItem translateZ={50} className="text-5xl mb-3">
+                  {prize.icon}
+                </CardItem>
+
                 {/* Place Badge */}
-                <CardItem translateZ={40} className="mb-4">
+                <CardItem translateZ={40} className="mb-3">
                   <span
                     className={`text-xs font-mono font-bold px-4 py-1.5 rounded-full bg-gradient-to-r ${prize.accentColor} text-white uppercase tracking-wider`}
                   >

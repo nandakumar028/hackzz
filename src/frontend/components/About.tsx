@@ -27,10 +27,7 @@ export function About() {
           
           {/* Left Column: Information Description */}
           <div className="flex flex-col items-start space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-200 bg-neutral-50 text-xs text-neutral-600 font-semibold uppercase tracking-widest backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              About the Arena
-            </div>
+            {/* Removed pill element as requested */}
             
             <BlurText
               text="Where Bold Ideas Meet Fast Execution."
@@ -41,7 +38,7 @@ export function About() {
             />
             
             <p className="text-neutral-600 leading-relaxed font-light text-base">
-              Hackzz is more than just a coding competition; it's a launchpad for future founders, innovators, and creators. For 48 hours, developers, designers, and domain experts gather to build solutions for real-world issues.
+            Hackzz is more than just a coding competition; it's a launchpad for future founders, innovators, and creators. For 48 hours, developers, designers, and domain experts gather to build solutions for real-world issues.
             </p>
             
             <p className="text-neutral-600 leading-relaxed font-light text-base">

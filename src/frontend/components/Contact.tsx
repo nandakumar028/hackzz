@@ -23,9 +23,7 @@ export function Contact() {
         
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-400 mb-6 uppercase tracking-wider">
-            Reach Out
-          </div>
+          {/* Removed pill element as requested */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
             Get in Touch.
           </h2>

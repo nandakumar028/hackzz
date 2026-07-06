@@ -8,45 +8,50 @@ interface Track {
   colorClass: string;
   borderColor: string;
   tags: string[];
+  difficulty: number;
 }
 
 const TRACKS: Track[] = [
   {
-    icon: "🧠",
-    title: "AI & Machine Learning",
-    prize: "₹1,50,000",
-    description: "Build deep learning networks, generative models, or automation engines that tackle core industry bottlenecks.",
-    colorClass: "from-blue-600/20 to-cyan-500/10",
-    borderColor: "hover:border-blue-500/40",
-    tags: ["LLMs", "ONNX", "PyTorch", "NLP"]
-  },
-  {
-    icon: "⛓️",
-    title: "Web3 & Blockchain",
-    prize: "₹1,20,000",
-    description: "Design decentralized protocols, smart vaults, NFT utilities, or cross-chain scaling mechanisms for Web3 users.",
-    colorClass: "from-violet-600/20 to-fuchsia-500/10",
-    borderColor: "hover:border-violet-500/40",
-    tags: ["Solidity", "ZK-Rollups", "Ethers", "Rust"]
-  },
-  {
-    icon: "💳",
-    title: "FinTech Innovation",
-    prize: "₹1,20,000",
-    description: "Pioneer automated accounting software, decentralized insurance pools, micropayment systems, or trading bots.",
-    colorClass: "from-emerald-600/20 to-teal-500/10",
-    borderColor: "hover:border-emerald-500/40",
-    tags: ["Stripe APIs", "Next.js", "Plaid", "GraphQL"]
-  },
-  {
     icon: "🚀",
     title: "Open Innovation",
-    prize: "₹1,10,000",
-    description: "No boundaries, no constraints. Bring your wildest hardware hacks, developer tools, or SaaS ideas to life.",
+    prize: "₹1,50,000",
+    description: "Build a solution for a real-world problem. Easier to showcase impact and creativity.",
     colorClass: "from-amber-600/20 to-red-500/10",
     borderColor: "hover:border-amber-500/40",
-    tags: ["IoT", "WASM", "Mobile Apps", "Any Tech"]
-  }
+    tags: ["Any Tech", "IoT", "SaaS", "Hardware"],
+    difficulty: 5,
+  },
+  {
+    icon: "🌐",
+    title: "Web Development",
+    prize: "₹1,20,000",
+    description: "Matches your frontend skills. Faster to build within a hackathon.",
+    colorClass: "from-blue-600/20 to-cyan-500/10",
+    borderColor: "hover:border-blue-500/40",
+    tags: ["React", "Next.js", "TypeScript", "Node.js"],
+    difficulty: 4,
+  },
+  {
+    icon: "🤖",
+    title: "Artificial Intelligence",
+    prize: "₹1,20,000",
+    description: "Add AI features using APIs rather than training models.",
+    colorClass: "from-violet-600/20 to-fuchsia-500/10",
+    borderColor: "hover:border-violet-500/40",
+    tags: ["OpenAI API", "LangChain", "HuggingFace", "NLP"],
+    difficulty: 3,
+  },
+  {
+    icon: "📱",
+    title: "Mobile App Development",
+    prize: "₹1,10,000",
+    description: "Good if your team knows Flutter or React Native.",
+    colorClass: "from-emerald-600/20 to-teal-500/10",
+    borderColor: "hover:border-emerald-500/40",
+    tags: ["Flutter", "React Native", "Firebase", "Expo"],
+    difficulty: 2,
+  },
 ];
 
 export function Tracks() {
@@ -59,9 +64,7 @@ export function Tracks() {
         
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-400 mb-6 uppercase tracking-wider">
-            Themes & Tracks
-          </div>
+          {/* Removed pill element as requested */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
             Choose Your Challenge.
           </h2>
@@ -71,10 +74,10 @@ export function Tracks() {
         </div>
 
         {/* 3D Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center items-stretch">
           {TRACKS.map((track) => (
-            <CardContainer key={track.title} containerClassName="py-6">
-              <CardBody className="bg-neutral-900/80 backdrop-blur border border-neutral-800 w-full min-h-[380px] rounded-2xl p-6 transition-colors duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-black/50 relative">
+            <CardContainer key={track.title} containerClassName="py-6 h-full">
+              <CardBody className="bg-neutral-900/80 backdrop-blur border border-neutral-800 w-full h-[420px] rounded-2xl p-6 transition-colors duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-black/50 relative">
                 {/* Glow effect on hover */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${track.colorClass} opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 -z-10`} />
 
@@ -105,7 +108,19 @@ export function Tracks() {
                     ))}
                   </CardItem>
 
-                  <div className="flex items-center justify-between border-t border-neutral-800/40 pt-4 mt-auto">
+                  <div className="flex flex-col gap-2 border-t border-neutral-800/40 pt-4 mt-auto">
+                    {/* Star difficulty rating */}
+                    <CardItem translateZ={35} className="flex items-center gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <span key={i} className={`text-sm ${i < track.difficulty ? "text-amber-400" : "text-neutral-700"}`}>
+                          ★
+                        </span>
+                      ))}
+                      <span className="ml-2 text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+                        difficulty
+                      </span>
+                    </CardItem>
+
                     <CardItem translateZ={30} className="text-xs text-blue-400 font-semibold tracking-wider uppercase">
                       🏆 {track.prize} Prize
                     </CardItem>
